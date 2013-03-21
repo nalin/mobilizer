@@ -1,3 +1,4 @@
+
 (function(){
 function rss_url() {
   return ($("link[rel='alternate'][type='application/rss+xml']")[0] || $("link[rel='alternate'][type='application/atom+xml']")[0]);
@@ -5,13 +6,6 @@ function rss_url() {
 
 function done(){ //on submit function
   if(rss = rss_url()) {
-		js_location = $('#mobilizer_js')[0].src.replace(/mobilizer\.js.*$/,'');
-    var link = document.createElement("link");
-    link.href = js_location + "mobilizer.css";
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    document.getElementsByTagName("head")[0].appendChild(link);
-    
     load_js("raw.github.com/jfhovinne/jFeed/master/build/dist/jquery.jfeed.pack.js", function() {parse_feed(rss.href)});
   } else {
     alert('no rss found :(');
@@ -24,7 +18,12 @@ function load(){ //load jQuery if it isn't already
       var body = document.getElementsByTagName('body')[0];
       var container = document.createElement("div");
       container.id = "mobilizer";
+			container.style.fontFamily = '\'Helvetica Neue\', \'Helvetica\', \'Arial\'';
+			container.style.color = "#333";
+
       body.innerHTML = "";
+			body.style.margin = "0";
+			body.style.padding = "0";
       
       var viewPortTag=document.createElement('meta');
       viewPortTag.id="viewport";
@@ -60,12 +59,17 @@ function load_js(url, onload){
   document.getElementsByTagName('body')[0].appendChild(script);
 }
 
+
 function parse_feed(url) {
   jQuery.getFeed({
      url: url,
      success: function(feed) {
-       var title = document.createElement("h1")
-       title.appendChild(document.createTextNode(feed.title));
+			var title = document.createElement("h1")
+			title.appendChild(document.createTextNode(feed.title));
+			title.style.fontSize = "1.2em";
+			title.style.padding = "10px";
+			title.style.marginBottom = "0";
+
        $('#mobilizer').append(title);             
        $('#mobilizer').append(render_recommended_apps());
        $('#mobilizer').append(render_rss_items(feed));
@@ -73,18 +77,31 @@ function parse_feed(url) {
    });
 }
 
+
 function render_recommended_apps() {
   var c = document.createElement("div");
   c.id = "mobilizer_apps";
+  c.style.background = "black";
+  c.style.padding = "5px";
+	c.style.overflow = "auto";
+	c.style.webkitOverflowScrolling = "touch";
   var label = document.createElement("div");
+ 	label.style.color = "#eee";
+	label.style.fontSize = ".7em";
   label.id = "mobilizer_apps_label"
   label.appendChild(document.createTextNode("Recommended Apps"));
   c.appendChild(label);
   var ads = document.createElement("div");
+	ads.style.height = "70px";
+	ads.style.width = "200%";
   ads.id = "mobilizer_app_ads";
   
   for(var i=0;i<6;i++) {
-    var app = document.createElement("img")
+    var app = document.createElement("img");
+		app.style.height = "50px";
+		app.style.width = "50px";
+		app.style.margin = "5px";
+		app.style.float = "left";
     app.className = "mobilizer_app_ad"
     app.src = "http://a194.phobos.apple.com/us/r1000/111/Purple/v4/de/cd/ac/decdac7c-65fc-0735-870c-64143dd7bb8f/mzl.rpqbierb.100x100-75.png";
     ads.appendChild(app);
@@ -95,10 +112,17 @@ function render_recommended_apps() {
 
 function render_rss_items(feed) {
   var list = document.createElement("ul");
+	list.style.listStyle = "none";
+	list.style.margin = "0";
+	list.style.padding = "0";
    $.each(feed.items, function() {
      //alert(this.title)
      var li = document.createElement('li');
+		 li.style.padding = "10px";
+		 li.style.borderBottom = "1px solid #ddd";
      var link = document.createElement('a');
+		 link.style.textDecoration = "none";
+		 link.style.color = "inherit";
      link.href = this.link;
      link.appendChild(document.createTextNode(this.title));
      li.appendChild(link);
