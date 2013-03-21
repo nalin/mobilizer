@@ -5,8 +5,8 @@ function rss_url() {
 
 function done(){ //on submit function
   if(rss = rss_url()) {
-    var link = document.createElement("link");http://a194.phobos.apple.com/us/r1000/111/Purple/v4/de/cd/ac/decdac7c-65fc-0735-870c-64143dd7bb8f/mzl.rpqbierb.100x100-75.png
-    link.href = "http://web1.tunnlr.com:10398/" + "mobilizer.css";
+    var link = document.createElement("link");
+    link.href = "https://raw.github.com/nalin/mobilizer/master/" + "mobilizer.css";
     link.type = "text/css";
     link.rel = "stylesheet";
     document.getElementsByTagName("head")[0].appendChild(link);
