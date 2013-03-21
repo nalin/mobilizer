@@ -24,6 +24,7 @@ function load(){ //load jQuery if it isn't already
       body.innerHTML = "";
 			body.style.margin = "0";
 			body.style.padding = "0";
+			body.style.fontSize = "1em";
       
       var viewPortTag=document.createElement('meta');
       viewPortTag.id="viewport";
@@ -69,6 +70,7 @@ function parse_feed(url) {
 			title.style.fontSize = "1.2em";
 			title.style.padding = "10px";
 			title.style.marginBottom = "0";
+			title.style.fontFamily = '\'Helvetica Neue\', \'Helvetica\', \'Arial\'';
 
        $('#mobilizer').append(title);             
        $('#mobilizer').append(render_recommended_apps());
@@ -120,6 +122,8 @@ function render_rss_items(feed) {
      var li = document.createElement('li');
 		 li.style.padding = "10px";
 		 li.style.borderBottom = "1px solid #ddd";
+		 li.style.fontFamily = '\'Helvetica Neue\', \'Helvetica\', \'Arial\'';
+		 li.style.fontSize = '1em';
      var link = document.createElement('a');
 		 link.style.textDecoration = "none";
 		 link.style.color = "inherit";
