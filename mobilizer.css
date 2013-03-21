@@ -1,0 +1,10 @@
+body { margin: 0; padding: 0;}
+#mobilizer { font-family: 'Helvetica Neue', 'Helvetica', 'Arial'; color: #333;}
+#mobilizer h1 { font-size: 1.2em; padding: 10px; margin-bottom: 0;}
+#mobilizer a {text-decoration: none; color: inherit;}
+#mobilizer ul{ list-style: none; margin: 0; padding: 0; }
+#mobilizer ul li { padding: 10px; border-bottom: 1px solid #ddd; }
+#mobilizer_apps { background: black; padding: 5px; overflow: auto; -webkit-overflow-scrolling: touch;}
+#mobilizer_apps_label { color: #eee; font-size: .7em;}
+#mobilizer_app_ads {height: 70px; width: 200%;}
+#mobilizer_apps .mobilizer_app_ad {height: 50px; width: 50px; margin: 5px; float: left;}
