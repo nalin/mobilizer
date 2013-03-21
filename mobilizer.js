@@ -5,8 +5,9 @@ function rss_url() {
 
 function done(){ //on submit function
   if(rss = rss_url()) {
+		js_location = $('#mobilizer_js')[0].src.replace(/mobilizer\.js.*$/,'');
     var link = document.createElement("link");
-    link.href = "https://raw.github.com/nalin/mobilizer/master/" + "mobilizer.css";
+    link.href = js_location + "mobilizer.css";
     link.type = "text/css";
     link.rel = "stylesheet";
     document.getElementsByTagName("head")[0].appendChild(link);
